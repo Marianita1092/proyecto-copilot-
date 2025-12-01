@@ -1,0 +1,147 @@
+📖 INSTRUCCIONES PARA VER EL BLOG
+═════════════════════════════════════════════════════════════════════════════════
+
+🚀 OPCIÓN 1: ABRIR DIRECTAMENTE (MÁS RÁPIDO)
+─────────────────────────────────────────────
+
+1. Navega a esta carpeta:
+   C:\UNINCA\ESTRUCTURA DE DATOS 2\proyecto-copilot-\blog\
+
+2. Haz doble-click en:
+   📄 index.html
+
+3. ¡El blog se abrirá en tu navegador predeterminado!
+
+═════════════════════════════════════════════════════════════════════════════════
+
+🌐 OPCIÓN 2: USAR SERVIDOR LOCAL (RECOMENDADO)
+───────────────────────────────────────────────
+
+PASOS:
+------
+
+1. Abre PowerShell (Windows):
+   - Click derecho en la carpeta proyecto-copilot-
+   - "Abrir PowerShell aquí"
+
+2. Ejecuta:
+   python -m http.server 8000
+
+3. Abre en tu navegador:
+   http://localhost:8000/blog/
+
+VENTAJAS:
+- Mejor rendimiento
+- Simula un servidor web real
+- Los scripts funcionan correctamente
+
+═════════════════════════════════════════════════════════════════════════════════
+
+🔗 ESTRUCTURA DE NAVEGACIÓN
+─────────────────────────────
+
+Página Principal: index.html
+│
+├─ Post #1: post1.html
+│  └─ Introducción a Grafos
+│
+├─ Post #2: post2.html
+│  └─ Representación de Grafos
+│
+└─ Post #3: post3.html
+   └─ Algoritmos BFS y DFS
+
+═════════════════════════════════════════════════════════════════════════════════
+
+🎯 QUÉ PUEDES HACER EN EL BLOG
+───────────────────────────────
+
+✅ Leer 3 posts detallados sobre Grafos
+✅ Ver diagramas interactivos en SVG
+✅ Cambiar a modo oscuro/claro (botón en header)
+✅ Ver código de ejemplo en Python
+✅ Ejecutar simulaciones de BFS y DFS (Post #3)
+✅ Navegar entre posts con botones
+
+═════════════════════════════════════════════════════════════════════════════════
+
+💡 TIPS
+───────
+
+1. El blog es 100% RESPONSIVO:
+   - Funciona en móvil, tablet y desktop
+   - Prueba cambiar el tamaño de la ventana
+
+2. El modo OSCURO se guarda:
+   - Si seleccionas "Modo Oscuro", se mantiene al recargar
+
+3. Los DIAGRAMAS son interactivos:
+   - Visualizaciones en SVG escalables
+   - Se adaptan a cualquier pantalla
+
+4. El CÓDIGO es comentado:
+   - Todos los ejemplos en Python están explicados
+   - Puedes copiar y ejecutar
+
+═════════════════════════════════════════════════════════════════════════════════
+
+❓ SOLUCIÓN DE PROBLEMAS
+────────────────────────
+
+PROBLEMA: El HTML se abre pero no ve estilos
+SOLUCIÓN: Usa la Opción 2 (servidor local)
+         o asegúrate de que los archivos CSS/JS están en assets/
+
+PROBLEMA: No funciona el botón de tema oscuro
+SOLUCIÓN: Abre con servidor local (python -m http.server)
+         Los archivos locales tienen restricciones de localStorage
+
+PROBLEMA: Los botones BFS/DFS no hacen nada
+SOLUCIÓN: Está en post3.html
+         Abre el archivo y haz click en los botones verdes
+
+═════════════════════════════════════════════════════════════════════════════════
+
+📁 ARCHIVOS IMPORTANTES
+───────────────────────
+
+blog/
+├── index.html ..................... Página principal
+├── posts/
+│   ├── post1.html ................. Introducción
+│   ├── post2.html ................. Representación
+│   └── post3.html ................. Algoritmos
+└── assets/
+    ├── css/style.css .............. Estilos (3000+ líneas)
+    └── js/script.js ............... Interactividad
+
+═════════════════════════════════════════════════════════════════════════════════
+
+🎓 QUÉ APRENDERÁS
+──────────────────
+
+Después de leer el blog sabrás:
+
+1. QUÉ ES UN GRAFO
+   - Definición formal
+   - Componentes (nodos, aristas)
+   - Tipos (dirigidos, no dirigidos, ponderados)
+
+2. CÓMO REPRESENTAR GRAFOS
+   - Lista de Adyacencia (pros/contras)
+   - Matriz de Adyacencia (pros/contras)
+   - Cuándo usar cada una
+
+3. CÓMO RECORRER GRAFOS
+   - BFS: búsqueda en amplitud
+   - DFS: búsqueda en profundidad
+   - Diferencias y aplicaciones
+   - Cómo implementarlos en código
+
+═════════════════════════════════════════════════════════════════════════════════
+
+¡DISFRUTA DEL BLOG! 🎉
+
+Si tienes dudas, revisa los comentarios en el código o lee el README.md
+
+Última actualización: 28 de Noviembre, 2025

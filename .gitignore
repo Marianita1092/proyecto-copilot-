@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# IDEs
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log
+
+# Node (si se usa)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Temporales
+*.tmp
+*.temp
+
+# Construcción
+dist/
+build/
+.next/
+out/
+
+# Específico del proyecto
+.env
+.env.local
+local/
+temp/

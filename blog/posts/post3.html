@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post 3: Algoritmos de Recorrido | Blog Técnico</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="5" cy="5" r="3" fill="white"/>
+                    <circle cx="25" cy="5" r="3" fill="white"/>
+                    <circle cx="15" cy="25" r="3" fill="white"/>
+                    <line x1="5" y1="5" x2="25" y2="5" stroke="white" stroke-width="1.5"/>
+                    <line x1="5" y1="5" x2="15" y2="25" stroke="white" stroke-width="1.5"/>
+                    <line x1="25" y1="5" x2="15" y2="25" stroke="white" stroke-width="1.5"/>
+                </svg>
+                Grafos Blog
+            </div>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#posts">Posts</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle">🌙 Modo Oscuro</button>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h1>Algoritmos Fundamentales de Recorrido: BFS y DFS</h1>
+            <div class="meta">
+                <strong>Autor:</strong> Equipo Educativo | <strong>Fecha:</strong> 28 de Noviembre, 2025
+                <br><strong>Tiempo de lectura:</strong> ⏱️ 12 minutos
+            </div>
+
+            <h2>Introducción</h2>
+            <p>
+                Uno de los problemas más fundamentales con grafos es poder <strong>recorrer o explorar</strong> todos sus nodos 
+                de manera sistemática. Existen dos algoritmos clásicos para hacerlo:
+            </p>
+            <ul>
+                <li><strong>BFS (Breadth-First Search)</strong> - Búsqueda en Amplitud</li>
+                <li><strong>DFS (Depth-First Search)</strong> - Búsqueda en Profundidad</li>
+            </ul>
+
+            <blockquote>
+                "BFS y DFS son los cimientos de muchos algoritmos más avanzados como Dijkstra, Prim, 
+                detección de ciclos y búsqueda de componentes conexas."
+            </blockquote>
+
+            <h2>1. BFS (Breadth-First Search) - Búsqueda en Amplitud</h2>
+
+            <h3>Concepto</h3>
+            <p>
+                <strong>BFS</strong> explora el grafo <strong>nivel por nivel</strong>. Comienza desde un nodo inicial 
+                y visita todos los vecinos antes de explorar a los vecinos de esos vecinos.
+            </p>
+
+            <h3>Algoritmo Paso a Paso</h3>
+            <ol>
+                <li>Crear una cola vacía e insertar el nodo inicial</li>
+                <li>Mientras la cola no esté vacía:
+                    <ul>
+                        <li>Extraer el primer nodo de la cola</li>
+                        <li>Si ya fue visitado, continuar</li>
+                        <li>Marcar el nodo como visitado</li>
+                        <li>Procesar el nodo (imprimirlo, contar, etc.)</li>
+                        <li>Agregar todos sus vecinos no visitados a la cola</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Pseudocódigo</h3>
+            <pre><code>BFS(grafo, inicio):
+    visitados = conjunto vacío
+    cola = cola_nueva()
+    cola.encolar(inicio)
+    
+    mientras cola no esté vacía:
+        nodo = cola.desencolar()
+        
+        si nodo está en visitados:
+            continuar
+        
+        visitados.agregar(nodo)
+        procesar(nodo)  // Acción deseada
+        
+        para cada vecino en grafo[nodo]:
+            si vecino no está en visitados:
+                cola.encolar(vecino)</code></pre>
+
+            <h3>Implementación en Python</h3>
+            <pre><code>from collections import deque
+
+def bfs(grafo, inicio):
+    visitados = set()
+    cola = deque([inicio])
+    resultado = []
+    
+    while cola:
+        nodo = cola.popleft()
+        
+        if nodo in visitados:
+            continue
+        
+        visitados.add(nodo)
+        resultado.append(nodo)
+        
+        # Agregar vecinos a la cola
+        if nodo in grafo:
+            for vecino in grafo[nodo]:
+                if vecino not in visitados:
+                    cola.append(vecino)
+    
+    return resultado
+
+# Ejemplo de uso
+grafo = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'E'],
+    'D': ['B'],
+    'E': ['C']
+}
+
+print(bfs(grafo, 'A'))  # Output: ['A', 'B', 'C', 'D', 'E']</code></pre>
+
+            <h3>Características</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Estructura de datos</strong></td>
+                        <td>Cola (FIFO)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad temporal</strong></td>
+                        <td>O(V + E)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad espacial</strong></td>
+                        <td>O(V)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Orden de visita</strong></td>
+                        <td>Por niveles (distancia)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Camino más corto</strong></td>
+                        <td>✅ Encuentra en grafos sin pesos</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Aplicaciones de BFS</h3>
+            <ul>
+                <li>🗺️ <strong>Camino más corto:</strong> En grafos sin pesos</li>
+                <li>🌳 <strong>Árbol BFS:</strong> Construcción de árbol de recorrido</li>
+                <li>🔗 <strong>Conectividad:</strong> Verificar si un grafo es conexo</li>
+                <li>🌐 <strong>Redes:</strong> Exploración de redes sociales</li>
+                <li>🎮 <strong>Videojuegos:</strong> IA de movimiento en tablero</li>
+                <li>🔍 <strong>Web crawling:</strong> Explorar enlaces en sitios web</li>
+            </ul>
+
+            <!-- Diagrama BFS -->
+            <div class="diagram-container">
+                <div class="diagram-title">📊 Visualización: Proceso BFS paso a paso</div>
+                <svg width="100%" height="400" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" style="max-width: 700px; margin: 0 auto; display: block;">
+                    <!-- Grafo origen (izquierda) -->
+                    <text x="50" y="25" font-size="16" font-weight="bold" fill="var(--text-primary)">Grafo Original</text>
+                    
+                    <!-- Nodos del grafo -->
+                    <circle cx="80" cy="80" r="20" fill="#6f42c1"/>
+                    <text x="80" y="88" text-anchor="middle" fill="white" font-weight="bold">A</text>
+                    
+                    <circle cx="150" cy="80" r="20" fill="#6f42c1"/>
+                    <text x="150" y="88" text-anchor="middle" fill="white" font-weight="bold">B</text>
+                    
+                    <circle cx="80" cy="150" r="20" fill="#6f42c1"/>
+                    <text x="80" y="158" text-anchor="middle" fill="white" font-weight="bold">C</text>
+                    
+                    <circle cx="150" cy="150" r="20" fill="#6f42c1"/>
+                    <text x="150" y="158" text-anchor="middle" fill="white" font-weight="bold">D</text>
+                    
+                    <!-- Aristas -->
+                    <line x1="80" y1="80" x2="150" y2="80" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="80" y1="80" x2="80" y2="150" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="150" y1="80" x2="150" y2="150" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="80" y1="150" x2="150" y2="150" stroke="#0d6efd" stroke-width="2"/>
+                    
+                    <!-- Orden de visita (derecha) -->
+                    <text x="450" y="25" font-size="16" font-weight="bold" fill="var(--text-primary)">Orden BFS desde A</text>
+                    
+                    <text x="350" y="80" fill="var(--text-primary)" font-weight="bold">Paso 1: Visitar A</text>
+                    <circle cx="420" cy="80" r="18" fill="#6f42c1"/>
+                    <text x="420" y="88" text-anchor="middle" fill="white" font-weight="bold">A</text>
+                    
+                    <text x="350" y="130" fill="var(--text-primary)" font-weight="bold">Paso 2-3: Vecinos de A (B, C)</text>
+                    <circle cx="420" cy="130" r="18" fill="#6f42c1"/>
+                    <text x="420" y="138" text-anchor="middle" fill="white" font-weight="bold">B</text>
+                    <circle cx="480" cy="130" r="18" fill="#6f42c1"/>
+                    <text x="480" y="138" text-anchor="middle" fill="white" font-weight="bold">C</text>
+                    
+                    <text x="350" y="180" fill="var(--text-primary)" font-weight="bold">Paso 4-5: Vecinos de B, C (D)</text>
+                    <circle cx="480" cy="180" r="18" fill="#6f42c1"/>
+                    <text x="480" y="188" text-anchor="middle" fill="white" font-weight="bold">D</text>
+                    
+                    <text x="350" y="240" font-size="14" fill="var(--accent-primary)" font-weight="bold">Resultado: A → B → C → D</text>
+                </svg>
+            </div>
+
+            <h2>2. DFS (Depth-First Search) - Búsqueda en Profundidad</h2>
+
+            <h3>Concepto</h3>
+            <p>
+                <strong>DFS</strong> explora el grafo <strong>lo más profundo posible</strong> antes de retroceder. 
+                Comienza desde un nodo y sigue explorando a lo largo de cada rama hasta el final, luego retrocede.
+            </p>
+
+            <h3>Algoritmo Paso a Paso</h3>
+            <ol>
+                <li>Marcar el nodo inicial como visitado</li>
+                <li>Para cada vecino no visitado:
+                    <ul>
+                        <li>Aplicar DFS recursivamente</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Pseudocódigo</h3>
+            <pre><code>DFS(grafo, nodo, visitados):
+    visitados.agregar(nodo)
+    procesar(nodo)  // Acción deseada
+    
+    para cada vecino en grafo[nodo]:
+        si vecino no está en visitados:
+            DFS(grafo, vecino, visitados)
+
+// Iniciar desde un nodo
+visitados = conjunto vacío
+DFS(grafo, inicio, visitados)</code></pre>
+
+            <h3>Implementación en Python</h3>
+            <pre><code>def dfs_recursivo(grafo, nodo, visitados, resultado):
+    visitados.add(nodo)
+    resultado.append(nodo)
+    
+    if nodo in grafo:
+        for vecino in grafo[nodo]:
+            if vecino not in visitados:
+                dfs_recursivo(grafo, vecino, visitados, resultado)
+
+def dfs(grafo, inicio):
+    visitados = set()
+    resultado = []
+    dfs_recursivo(grafo, inicio, visitados, resultado)
+    return resultado
+
+# Versión iterativa con pila
+def dfs_iterativo(grafo, inicio):
+    visitados = set()
+    pila = [inicio]
+    resultado = []
+    
+    while pila:
+        nodo = pila.pop()
+        
+        if nodo in visitados:
+            continue
+        
+        visitados.add(nodo)
+        resultado.append(nodo)
+        
+        if nodo in grafo:
+            for vecino in reversed(grafo[nodo]):
+                if vecino not in visitados:
+                    pila.append(vecino)
+    
+    return resultado
+
+# Ejemplo de uso
+grafo = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'E'],
+    'D': ['B'],
+    'E': ['C']
+}
+
+print(dfs(grafo, 'A'))  # Output: ['A', 'B', 'D', 'C', 'E']</code></pre>
+
+            <h3>Características</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Estructura de datos</strong></td>
+                        <td>Pila (LIFO) o Recursión</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad temporal</strong></td>
+                        <td>O(V + E)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad espacial</strong></td>
+                        <td>O(V)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Orden de visita</strong></td>
+                        <td>Profundidad-primero</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Detección de ciclos</strong></td>
+                        <td>✅ Ideal para detectar ciclos</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Aplicaciones de DFS</h3>
+            <ul>
+                <li>🔄 <strong>Detección de ciclos:</strong> En grafos dirigidos</li>
+                <li>🔗 <strong>Componentes conexas:</strong> Encontrar grupos de nodos conectados</li>
+                <li>📐 <strong>Ordenamiento topológico:</strong> En grafos dirigidos acíclicos</li>
+                <li>🗺️ <strong>Caminos en laberintos:</strong> Exploración exhaustiva</li>
+                <li>🎨 <strong>Coloreo de grafos:</strong> Asignación de colores</li>
+                <li>🔍 <strong>Backtracking:</strong> Problemas de búsqueda con retroceso</li>
+            </ul>
+
+            <!-- Diagrama DFS -->
+            <div class="diagram-container">
+                <div class="diagram-title">📊 Visualización: Proceso DFS paso a paso</div>
+                <svg width="100%" height="400" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" style="max-width: 700px; margin: 0 auto; display: block;">
+                    <!-- Grafo origen (izquierda) -->
+                    <text x="50" y="25" font-size="16" font-weight="bold" fill="var(--text-primary)">Grafo Original</text>
+                    
+                    <!-- Nodos del grafo -->
+                    <circle cx="80" cy="80" r="20" fill="#6f42c1"/>
+                    <text x="80" y="88" text-anchor="middle" fill="white" font-weight="bold">A</text>
+                    
+                    <circle cx="150" cy="80" r="20" fill="#6f42c1"/>
+                    <text x="150" y="88" text-anchor="middle" fill="white" font-weight="bold">B</text>
+                    
+                    <circle cx="80" cy="150" r="20" fill="#6f42c1"/>
+                    <text x="80" y="158" text-anchor="middle" fill="white" font-weight="bold">C</text>
+                    
+                    <circle cx="150" cy="150" r="20" fill="#6f42c1"/>
+                    <text x="150" y="158" text-anchor="middle" fill="white" font-weight="bold">D</text>
+                    
+                    <!-- Aristas -->
+                    <line x1="80" y1="80" x2="150" y2="80" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="80" y1="80" x2="80" y2="150" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="150" y1="80" x2="150" y2="150" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="80" y1="150" x2="150" y2="150" stroke="#0d6efd" stroke-width="2"/>
+                    
+                    <!-- Orden de visita (derecha) -->
+                    <text x="450" y="25" font-size="16" font-weight="bold" fill="var(--text-primary)">Orden DFS desde A</text>
+                    
+                    <text x="350" y="80" fill="var(--text-primary)" font-weight="bold">Paso 1: Visitar A</text>
+                    <circle cx="420" cy="80" r="18" fill="#6f42c1"/>
+                    <text x="420" y="88" text-anchor="middle" fill="white" font-weight="bold">A</text>
+                    
+                    <text x="350" y="130" fill="var(--text-primary)" font-weight="bold">Paso 2: Ir profundo a B</text>
+                    <circle cx="420" cy="130" r="18" fill="#6f42c1"/>
+                    <text x="420" y="138" text-anchor="middle" fill="white" font-weight="bold">B</text>
+                    
+                    <text x="350" y="180" fill="var(--text-primary)" font-weight="bold">Paso 3: Ir profundo a D</text>
+                    <circle cx="480" cy="130" r="18" fill="#6f42c1"/>
+                    <text x="480" y="138" text-anchor="middle" fill="white" font-weight="bold">D</text>
+                    
+                    <text x="350" y="230" fill="var(--text-primary)" font-weight="bold">Paso 4: Retroceder a C</text>
+                    <circle cx="540" cy="130" r="18" fill="#6f42c1"/>
+                    <text x="540" y="138" text-anchor="middle" fill="white" font-weight="bold">C</text>
+                    
+                    <text x="350" y="280" font-size="14" fill="var(--accent-primary)" font-weight="bold">Resultado: A → B → D → C</text>
+                </svg>
+            </div>
+
+            <h2>Comparación: BFS vs DFS</h2>
+
+            <div class="comparison">
+                <div class="comparison-item">
+                    <h4>🔍 BFS (Amplitud)</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>Estructura:</strong> Cola</li>
+                        <li><strong>Orden:</strong> Por niveles</li>
+                        <li><strong>Camino corto:</strong> ✅ Sí</li>
+                        <li><strong>Ciclos:</strong> ❌ Difícil</li>
+                        <li><strong>Espacio:</strong> O(V)</li>
+                        <li><strong>Ideal para:</strong> Distancias, niveles</li>
+                    </ul>
+                </div>
+                <div class="comparison-item">
+                    <h4>🔍 DFS (Profundidad)</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>Estructura:</strong> Pila</li>
+                        <li><strong>Orden:</strong> Profundo-primero</li>
+                        <li><strong>Camino corto:</strong> ❌ No garantizado</li>
+                        <li><strong>Ciclos:</strong> ✅ Sí</li>
+                        <li><strong>Espacio:</strong> O(h) (altura)</li>
+                        <li><strong>Ideal para:</strong> Ciclos, topología</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Tabla Comparativa Detallada</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criterio</th>
+                        <th>BFS</th>
+                        <th>DFS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Estructura de datos</strong></td>
+                        <td>Cola</td>
+                        <td>Pila</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tiempo</strong></td>
+                        <td>O(V + E)</td>
+                        <td>O(V + E)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Espacio</strong></td>
+                        <td>O(V)</td>
+                        <td>O(V)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Camino más corto</strong></td>
+                        <td><span class="highlight">✅ Óptimo</span></td>
+                        <td>❌ No garantizado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Detección de ciclos</strong></td>
+                        <td>❌ Difícil</td>
+                        <td><span class="highlight">✅ Fácil</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Componentes conexas</strong></td>
+                        <td>✅ Bien</td>
+                        <td>✅ Bien</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ordenamiento topológico</strong></td>
+                        <td>❌</td>
+                        <td><span class="highlight">✅ Bien</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Implementación</strong></td>
+                        <td>Iterativa (natural)</td>
+                        <td>Recursiva (natural)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Ejercicios Prácticos</h2>
+
+            <h3>Ejercicio 1: Encontrar si existe un camino</h3>
+            <pre><code>def existe_camino(grafo, inicio, destino):
+    """Usa BFS para encontrar si existe un camino"""
+    visitados = set()
+    cola = deque([inicio])
+    
+    while cola:
+        nodo = cola.popleft()
+        if nodo == destino:
+            return True
+        if nodo in visitados:
+            continue
+        visitados.add(nodo)
+        
+        if nodo in grafo:
+            cola.extend(grafo[nodo])
+    
+    return False</code></pre>
+
+            <h3>Ejercicio 2: Contar componentes conexas</h3>
+            <pre><code>def contar_componentes(grafo):
+    """Usa DFS para contar grupos de nodos conexos"""
+    visitados = set()
+    componentes = 0
+    
+    def dfs(nodo):
+        visitados.add(nodo)
+        if nodo in grafo:
+            for vecino in grafo[nodo]:
+                if vecino not in visitados:
+                    dfs(vecino)
+    
+    for nodo in grafo:
+        if nodo not in visitados:
+            dfs(nodo)
+            componentes += 1
+    
+    return componentes</code></pre>
+
+            <h2>Conclusión</h2>
+            <p>
+                <strong>BFS y DFS</strong> son algoritmos fundamentales para trabajar con grafos. Aunque tienen la misma complejidad temporal, 
+                sus características diferentes los hacen más adecuados para diferentes problemas:
+            </p>
+            <ul>
+                <li>Usa <strong>BFS</strong> cuando necesites el camino más corto o explorar por niveles</li>
+                <li>Usa <strong>DFS</strong> cuando necesites detectar ciclos, ordenamiento topológico o exploración exhaustiva</li>
+            </ul>
+
+            <!-- Demostración Interactiva -->
+            <div class="container" style="margin-top: 3rem;">
+                <h2>Demo Interactiva</h2>
+                <p>Haz clic en los botones para ver el recorrido de cada algoritmo:</p>
+                
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+                    <button id="bfs-demo" class="btn">🔍 Ejecutar BFS</button>
+                    <button id="dfs-demo" class="btn btn-secondary">🔍 Ejecutar DFS</button>
+                </div>
+                
+                <div id="bfs-result" style="display:none; background-color: var(--bg-tertiary); padding: 1rem; border-radius: 4px; margin: 1rem 0; font-family: monospace;"></div>
+                <div id="dfs-result" style="display:none; background-color: var(--bg-tertiary); padding: 1rem; border-radius: 4px; margin: 1rem 0; font-family: monospace;"></div>
+            </div>
+
+            <!-- Navegación de posts -->
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <a href="post2.html" class="btn btn-small">← Post Anterior: Representación</a>
+                    <a href="../index.html" class="btn btn-small">Volver al Inicio →</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Blog Técnico - Estructura de Datos: Grafos</p>
+        <p>Proyecto educativo para el curso de <strong>Estructura de Datos 2</strong> - UNINCA</p>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

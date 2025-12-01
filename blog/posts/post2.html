@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post 2: Representación de Grafos | Blog Técnico</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="5" cy="5" r="3" fill="white"/>
+                    <circle cx="25" cy="5" r="3" fill="white"/>
+                    <circle cx="15" cy="25" r="3" fill="white"/>
+                    <line x1="5" y1="5" x2="25" y2="5" stroke="white" stroke-width="1.5"/>
+                    <line x1="5" y1="5" x2="15" y2="25" stroke="white" stroke-width="1.5"/>
+                    <line x1="25" y1="5" x2="15" y2="25" stroke="white" stroke-width="1.5"/>
+                </svg>
+                Grafos Blog
+            </div>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#posts">Posts</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle">🌙 Modo Oscuro</button>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h1>Representación de Grafos en Memoria</h1>
+            <div class="meta">
+                <strong>Autor:</strong> Equipo Educativo | <strong>Fecha:</strong> 28 de Noviembre, 2025
+                <br><strong>Tiempo de lectura:</strong> ⏱️ 10 minutos
+            </div>
+
+            <h2>Introducción</h2>
+            <p>
+                Una vez que entendemos qué es un grafo, el siguiente paso es aprender cómo representarlo en la memoria de una computadora. 
+                Existen <strong>dos principales formas</strong> de representar un grafo:
+            </p>
+            <ol>
+                <li><strong>Lista de Adyacencia</strong> - Eficiente en espacio para grafos dispersos</li>
+                <li><strong>Matriz de Adyacencia</strong> - Eficiente en tiempo para consultas de aristas</li>
+            </ol>
+
+            <blockquote>
+                "La elección entre Lista de Adyacencia y Matriz de Adyacencia depende de la naturaleza del grafo 
+                (denso o disperso) y del tipo de operaciones que necesitas realizar."
+            </blockquote>
+
+            <h2>1. Lista de Adyacencia</h2>
+
+            <h3>Definición</h3>
+            <p>
+                Una <strong>Lista de Adyacencia</strong> es una forma de representar un grafo utilizando una colección de listas. 
+                Para cada vértice, se mantiene una lista de todos los vértices adyacentes (vecinos) a él.
+            </p>
+
+            <h3>Estructura</h3>
+            <pre><code># Representación usando diccionario en Python
+grafo = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'E'],
+    'D': ['B'],
+    'E': ['C']
+}</code></pre>
+
+            <h3>Ventajas</h3>
+            <ul>
+                <li>✅ <strong>Eficiente en espacio:</strong> O(V + E), ideal para grafos dispersos</li>
+                <li>✅ <strong>Acceso a vecinos:</strong> Muy rápido para obtener los adyacentes</li>
+                <li>✅ <strong>Flexible:</strong> Fácil agregar o remover aristas</li>
+                <li>✅ <strong>Bajo consumo de memoria:</strong> Para grafos con pocas aristas</li>
+            </ul>
+
+            <h3>Desventajas</h3>
+            <ul>
+                <li>❌ <strong>Verificar arista:</strong> O(V) en el peor caso para verificar si existe una arista</li>
+                <li>❌ <strong>Búsqueda lenta:</strong> Necesita iterar la lista para encontrar una arista específica</li>
+            </ul>
+
+            <!-- Diagrama Lista de Adyacencia -->
+            <div class="diagram-container">
+                <div class="diagram-title">📊 Representación: Lista de Adyacencia</div>
+                <svg width="100%" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" style="max-width: 600px; margin: 0 auto; display: block;">
+                    <!-- Vértices en la izquierda -->
+                    <text x="30" y="25" font-size="14" font-weight="bold" fill="var(--text-primary)">Vértice</text>
+                    <text x="200" y="25" font-size="14" font-weight="bold" fill="var(--text-primary)">Adyacentes</text>
+
+                    <!-- Filas de la lista -->
+                    <g>
+                        <rect x="20" y="40" width="60" height="30" fill="#6f42c1" stroke="#0d6efd" stroke-width="2"/>
+                        <text x="50" y="62" text-anchor="middle" fill="white" font-weight="bold">A</text>
+
+                        <text x="200" y="62" fill="var(--text-primary)" font-family="monospace">B → C</text>
+                    </g>
+
+                    <g>
+                        <rect x="20" y="85" width="60" height="30" fill="#6f42c1" stroke="#0d6efd" stroke-width="2"/>
+                        <text x="50" y="107" text-anchor="middle" fill="white" font-weight="bold">B</text>
+
+                        <text x="200" y="107" fill="var(--text-primary)" font-family="monospace">A → D</text>
+                    </g>
+
+                    <g>
+                        <rect x="20" y="130" width="60" height="30" fill="#6f42c1" stroke="#0d6efd" stroke-width="2"/>
+                        <text x="50" y="152" text-anchor="middle" fill="white" font-weight="bold">C</text>
+
+                        <text x="200" y="152" fill="var(--text-primary)" font-family="monospace">A → E</text>
+                    </g>
+
+                    <g>
+                        <rect x="20" y="175" width="60" height="30" fill="#6f42c1" stroke="#0d6efd" stroke-width="2"/>
+                        <text x="50" y="197" text-anchor="middle" fill="white" font-weight="bold">D</text>
+
+                        <text x="200" y="197" fill="var(--text-primary)" font-family="monospace">B</text>
+                    </g>
+
+                    <g>
+                        <rect x="20" y="220" width="60" height="30" fill="#6f42c1" stroke="#0d6efd" stroke-width="2"/>
+                        <text x="50" y="242" text-anchor="middle" fill="white" font-weight="bold">E</text>
+
+                        <text x="200" y="242" fill="var(--text-primary)" font-family="monospace">C</text>
+                    </g>
+                </svg>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">
+                    <strong>Complejidad:</strong> Espacio O(V+E), Acceso a vecinos O(1)
+                </p>
+            </div>
+
+            <h3>Ejemplo en Código: Python</h3>
+            <pre><code>class GrafoListaAdyacencia:
+    def __init__(self):
+        self.grafo = {}
+    
+    def agregar_vertice(self, v):
+        if v not in self.grafo:
+            self.grafo[v] = []
+    
+    def agregar_arista(self, u, v):
+        self.agregar_vertice(u)
+        self.agregar_vertice(v)
+        self.grafo[u].append(v)
+        self.grafo[v].append(u)  # Para grafos no dirigidos
+    
+    def obtener_vecinos(self, v):
+        return self.grafo.get(v, [])
+
+# Uso
+g = GrafoListaAdyacencia()
+g.agregar_arista('A', 'B')
+g.agregar_arista('A', 'C')
+g.agregar_arista('B', 'D')
+
+print(g.grafo)  
+# Output: {'A': ['B', 'C'], 'B': ['A', 'D'], 'C': ['A'], 'D': ['B']}</code></pre>
+
+            <h2>2. Matriz de Adyacencia</h2>
+
+            <h3>Definición</h3>
+            <p>
+                Una <strong>Matriz de Adyacencia</strong> es una matriz cuadrada de tamaño V×V (donde V es el número de vértices). 
+                El elemento en la posición (i, j) es:
+            </p>
+            <ul>
+                <li><strong>1 (o el peso)</strong> si existe una arista entre los vértices i y j</li>
+                <li><strong>0</strong> si no existe arista</li>
+            </ul>
+
+            <h3>Estructura</h3>
+            <pre><code># Representación usando matriz en Python
+# Para el grafo: A-B, A-C, B-D, C-E
+
+vertices = ['A', 'B', 'C', 'D', 'E']
+matriz = [
+    [0, 1, 1, 0, 0],  # A
+    [1, 0, 0, 1, 0],  # B
+    [1, 0, 0, 0, 1],  # C
+    [0, 1, 0, 0, 0],  # D
+    [0, 0, 1, 0, 0]   # E
+]</code></pre>
+
+            <h3>Ventajas</h3>
+            <ul>
+                <li>✅ <strong>Consulta rápida:</strong> O(1) para verificar si existe una arista</li>
+                <li>✅ <strong>Simple de implementar:</strong> Utiliza una estructura de datos familiar</li>
+                <li>✅ <strong>Eficiente para grafos densos:</strong> Cuando hay muchas aristas</li>
+                <li>✅ <strong>Operaciones de matriz:</strong> Puede usar álgebra lineal</li>
+            </ul>
+
+            <h3>Desventajas</h3>
+            <ul>
+                <li>❌ <strong>Uso de memoria:</strong> O(V²), incluso para grafos dispersos</li>
+                <li>❌ <strong>Iteración de vecinos:</strong> O(V) aunque haya pocos adyacentes</li>
+                <li>❌ <strong>Espacio desperdiciado:</strong> Para grafos con pocas aristas</li>
+            </ul>
+
+            <!-- Diagrama Matriz de Adyacencia -->
+            <div class="diagram-container">
+                <div class="diagram-title">📊 Representación: Matriz de Adyacencia</div>
+                <svg width="100%" height="280" viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" style="max-width: 500px; margin: 0 auto; display: block;">
+                    <!-- Encabezados -->
+                    <text x="40" y="30" text-anchor="middle" font-weight="bold" fill="var(--text-primary)">A</text>
+                    <text x="110" y="30" text-anchor="middle" font-weight="bold" fill="var(--text-primary)">B</text>
+                    <text x="180" y="30" text-anchor="middle" font-weight="bold" fill="var(--text-primary)">C</text>
+                    <text x="250" y="30" text-anchor="middle" font-weight="bold" fill="var(--text-primary)">D</text>
+                    <text x="320" y="30" text-anchor="middle" font-weight="bold" fill="var(--text-primary)">E</text>
+
+                    <!-- Etiquetas izquierda -->
+                    <text x="10" y="75" text-anchor="end" font-weight="bold" fill="var(--text-primary)">A</text>
+                    <text x="10" y="145" text-anchor="end" font-weight="bold" fill="var(--text-primary)">B</text>
+                    <text x="10" y="215" text-anchor="end" font-weight="bold" fill="var(--text-primary)">C</text>
+
+                    <!-- Fila A -->
+                    <g>
+                        <rect x="20" y="45" width="40" height="40" fill="#e9ecef" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="40" y="70" text-anchor="middle" fill="var(--text-primary)" font-weight="bold">0</text>
+
+                        <rect x="90" y="45" width="40" height="40" fill="#198754" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="110" y="70" text-anchor="middle" fill="white" font-weight="bold">1</text>
+
+                        <rect x="160" y="45" width="40" height="40" fill="#198754" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="180" y="70" text-anchor="middle" fill="white" font-weight="bold">1</text>
+
+                        <rect x="230" y="45" width="40" height="40" fill="#e9ecef" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="250" y="70" text-anchor="middle" fill="var(--text-primary)" font-weight="bold">0</text>
+
+                        <rect x="300" y="45" width="40" height="40" fill="#e9ecef" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="320" y="70" text-anchor="middle" fill="var(--text-primary)" font-weight="bold">0</text>
+                    </g>
+
+                    <!-- Fila B -->
+                    <g>
+                        <rect x="20" y="115" width="40" height="40" fill="#198754" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="40" y="140" text-anchor="middle" fill="white" font-weight="bold">1</text>
+
+                        <rect x="90" y="115" width="40" height="40" fill="#e9ecef" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="110" y="140" text-anchor="middle" fill="var(--text-primary)" font-weight="bold">0</text>
+
+                        <rect x="160" y="115" width="40" height="40" fill="#e9ecef" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="180" y="140" text-anchor="middle" fill="var(--text-primary)" font-weight="bold">0</text>
+
+                        <rect x="230" y="115" width="40" height="40" fill="#198754" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="250" y="140" text-anchor="middle" fill="white" font-weight="bold">1</text>
+
+                        <rect x="300" y="115" width="40" height="40" fill="#e9ecef" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="320" y="140" text-anchor="middle" fill="var(--text-primary)" font-weight="bold">0</text>
+                    </g>
+
+                    <!-- Fila C -->
+                    <g>
+                        <rect x="20" y="185" width="40" height="40" fill="#198754" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="40" y="210" text-anchor="middle" fill="white" font-weight="bold">1</text>
+
+                        <rect x="90" y="185" width="40" height="40" fill="#e9ecef" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="110" y="210" text-anchor="middle" fill="var(--text-primary)" font-weight="bold">0</text>
+
+                        <rect x="160" y="185" width="40" height="40" fill="#e9ecef" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="180" y="210" text-anchor="middle" fill="var(--text-primary)" font-weight="bold">0</text>
+
+                        <rect x="230" y="185" width="40" height="40" fill="#e9ecef" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="250" y="210" text-anchor="middle" fill="var(--text-primary)" font-weight="bold">0</text>
+
+                        <rect x="300" y="185" width="40" height="40" fill="#198754" stroke="#0d6efd" stroke-width="1"/>
+                        <text x="320" y="210" text-anchor="middle" fill="white" font-weight="bold">1</text>
+                    </g>
+                </svg>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">
+                    <strong>Verde (1):</strong> Existe arista | <strong>Gris (0):</strong> No existe arista<br>
+                    <strong>Complejidad:</strong> Espacio O(V²), Consulta O(1)
+                </p>
+            </div>
+
+            <h3>Ejemplo en Código: Python</h3>
+            <pre><code>class GrafoMatrizAdyacencia:
+    def __init__(self, num_vertices):
+        self.V = num_vertices
+        self.matriz = [[0] * num_vertices for _ in range(num_vertices)]
+        self.vertices = {}
+        self.indice_vertice = {}
+    
+    def agregar_vertice(self, v):
+        if v not in self.vertices:
+            idx = len(self.vertices)
+            self.vertices[v] = idx
+            self.indice_vertice[idx] = v
+    
+    def agregar_arista(self, u, v):
+        self.agregar_vertice(u)
+        self.agregar_vertice(v)
+        idx_u = self.vertices[u]
+        idx_v = self.vertices[v]
+        self.matriz[idx_u][idx_v] = 1
+        self.matriz[idx_v][idx_u] = 1  # Para grafos no dirigidos
+    
+    def existe_arista(self, u, v):
+        idx_u = self.vertices[u]
+        idx_v = self.vertices[v]
+        return self.matriz[idx_u][idx_v] == 1
+
+# Uso
+g = GrafoMatrizAdyacencia(5)
+g.agregar_arista('A', 'B')
+g.agregar_arista('A', 'C')
+g.agregar_arista('B', 'D')
+
+print(g.existe_arista('A', 'B'))  # True
+print(g.existe_arista('A', 'D'))  # False</code></pre>
+
+            <h2>Comparación: Lista vs Matriz</h2>
+
+            <div class="comparison">
+                <div class="comparison-item">
+                    <h4>📋 Lista de Adyacencia</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>Espacio:</strong> O(V + E)</li>
+                        <li><strong>Consultar arista:</strong> O(V)</li>
+                        <li><strong>Obtener vecinos:</strong> O(1)</li>
+                        <li><strong>Añadir arista:</strong> O(1)</li>
+                        <li><strong>Mejor para:</strong> Grafos dispersos</li>
+                        <li><strong>Ejemplo:</strong> Red social (mil usuarios, miles de conexiones)</li>
+                    </ul>
+                </div>
+                <div class="comparison-item">
+                    <h4>🔲 Matriz de Adyacencia</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>Espacio:</strong> O(V²)</li>
+                        <li><strong>Consultar arista:</strong> O(1)</li>
+                        <li><strong>Obtener vecinos:</strong> O(V)</li>
+                        <li><strong>Añadir arista:</strong> O(1)</li>
+                        <li><strong>Mejor para:</strong> Grafos densos</li>
+                        <li><strong>Ejemplo:</strong> Matriz de distancias entre ciudades</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Tabla Comparativa de Complejidad</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operación</th>
+                        <th>Lista Adyacencia</th>
+                        <th>Matriz Adyacencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Espacio</td>
+                        <td>O(V + E)</td>
+                        <td>O(V²)</td>
+                    </tr>
+                    <tr>
+                        <td>Verificar arista (u,v)</td>
+                        <td>O(V)</td>
+                        <td><span class="highlight">O(1)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Agregar arista</td>
+                        <td>O(1)</td>
+                        <td>O(1)</td>
+                    </tr>
+                    <tr>
+                        <td>Eliminar arista</td>
+                        <td>O(V)</td>
+                        <td>O(1)</td>
+                    </tr>
+                    <tr>
+                        <td>Obtener vecinos de v</td>
+                        <td><span class="highlight">O(V)</span></td>
+                        <td>O(V)</td>
+                    </tr>
+                    <tr>
+                        <td>Iterar todas aristas</td>
+                        <td><span class="highlight">O(V + E)</span></td>
+                        <td>O(V²)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>¿Cuál Usar?</h2>
+            <blockquote>
+                <strong>Lista de Adyacencia:</strong> Cuando el grafo es disperso (E << V²). Ejemplo: redes sociales, web, carreteras.
+                <br><br>
+                <strong>Matriz de Adyacencia:</strong> Cuando el grafo es denso (E ≈ V²) o necesitas consultas frecuentes de aristas. Ejemplo: matriz de distancias, problemas de programación dinámica.
+            </blockquote>
+
+            <h2>Otras Representaciones</h2>
+            <ul>
+                <li><strong>Lista de Incidencia:</strong> Para grafos dirigidos, lista de todas las aristas</li>
+                <li><strong>Formato COO (Coordinate Format):</strong> Para matrices dispersas</li>
+                <li><strong>Formato CSR (Compressed Sparse Row):</strong> Compresión de matrices dispersas</li>
+            </ul>
+
+            <h2>Conclusión</h2>
+            <p>
+                La elección de la representación es fundamental para la eficiencia de los algoritmos que implementamos. 
+                Entender las características de cada representación nos permite tomar decisiones informadas y optimizar nuestro código.
+            </p>
+
+            <!-- Navegación de posts -->
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <a href="post1.html" class="btn btn-small">← Post Anterior: Introducción</a>
+                    <a href="post3.html" class="btn btn-small">Siguiente: Algoritmos de Recorrido →</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Blog Técnico - Estructura de Datos: Grafos</p>
+        <p>Proyecto educativo para el curso de <strong>Estructura de Datos 2</strong> - UNINCA</p>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post 1: Introducción a los Grafos | Blog Técnico</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="5" cy="5" r="3" fill="white"/>
+                    <circle cx="25" cy="5" r="3" fill="white"/>
+                    <circle cx="15" cy="25" r="3" fill="white"/>
+                    <line x1="5" y1="5" x2="25" y2="5" stroke="white" stroke-width="1.5"/>
+                    <line x1="5" y1="5" x2="15" y2="25" stroke="white" stroke-width="1.5"/>
+                    <line x1="25" y1="5" x2="15" y2="25" stroke="white" stroke-width="1.5"/>
+                </svg>
+                Grafos Blog
+            </div>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#posts">Posts</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle">🌙 Modo Oscuro</button>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h1>Introducción a los Grafos: Nodos, Aristas y Tipos</h1>
+            <div class="meta">
+                <strong>Autor:</strong> Equipo Educativo | <strong>Fecha:</strong> 28 de Noviembre, 2025
+                <br><strong>Tiempo de lectura:</strong> ⏱️ 8 minutos
+            </div>
+
+            <h2>¿Qué es un Grafo?</h2>
+            <p>
+                Un <strong>grafo</strong> es una estructura de datos abstracta que se utiliza para representar relaciones entre objetos. 
+                Consiste en un conjunto de <strong>vértices (o nodos)</strong> conectados por <strong>aristas (o ejes)</strong>. 
+                Es una de las estructuras de datos más versátiles y fundamentales en la informática.
+            </p>
+
+            <blockquote>
+                "Un grafo es un par ordenado G = (V, E), donde V es el conjunto de vértices y E es el conjunto de aristas 
+                que conectan pares de vértices."
+            </blockquote>
+
+            <h2>Conceptos Fundamentales</h2>
+
+            <h3>1. Vértices (Nodos)</h3>
+            <p>
+                Los <strong>vértices o nodos</strong> son los elementos básicos del grafo. Cada vértice es una entidad independiente 
+                que puede contener información (datos). En aplicaciones reales, pueden representar:
+            </p>
+            <ul>
+                <li>Personas en una red social</li>
+                <li>Ciudades en un mapa</li>
+                <li>Computadoras en una red</li>
+                <li>Estaciones de transporte</li>
+                <li>Cualquier entidad abstracta o física</li>
+            </ul>
+
+            <h3>2. Aristas (Ejes)</h3>
+            <p>
+                Las <strong>aristas o ejes</strong> son las conexiones que relacionan dos vértices entre sí. 
+                Una arista siempre conecta exactamente dos vértices. Las aristas pueden ser:
+            </p>
+            <ul>
+                <li><strong>Dirigidas:</strong> Tienen una dirección específica (de A a B)</li>
+                <li><strong>No dirigidas:</strong> No tienen dirección (conexión bidireccional)</li>
+                <li><strong>Ponderadas:</strong> Tienen un valor numérico asociado (peso o costo)</li>
+            </ul>
+
+            <h3>3. Grado de un Vértice</h3>
+            <p>
+                El <strong>grado</strong> de un vértice es el número de aristas conectadas a ese vértice. En grafos dirigidos, 
+                se distingue entre:
+            </p>
+            <ul>
+                <li><strong>Grado de entrada (in-degree):</strong> Número de aristas que apuntan al vértice</li>
+                <li><strong>Grado de salida (out-degree):</strong> Número de aristas que salen del vértice</li>
+            </ul>
+
+            <!-- Diagrama ejemplo -->
+            <div class="diagram-container">
+                <div class="diagram-title">📊 Ejemplo: Grafo No Dirigido Simple</div>
+                <svg width="100%" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg" style="max-width: 500px; margin: 0 auto; display: block;">
+                    <!-- Aristas -->
+                    <line x1="100" y1="100" x2="200" y2="100" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="100" y1="100" x2="150" y2="200" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="200" y1="100" x2="300" y2="150" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="200" y1="100" x2="150" y2="200" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="150" y1="200" x2="300" y2="150" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="300" y1="150" x2="400" y2="100" stroke="#0d6efd" stroke-width="2"/>
+
+                    <!-- Vértices -->
+                    <circle cx="100" cy="100" r="25" fill="#6f42c1"/>
+                    <text x="100" y="110" text-anchor="middle" fill="white" font-weight="bold" font-size="16">A</text>
+
+                    <circle cx="200" cy="100" r="25" fill="#6f42c1"/>
+                    <text x="200" y="110" text-anchor="middle" fill="white" font-weight="bold" font-size="16">B</text>
+
+                    <circle cx="150" cy="200" r="25" fill="#6f42c1"/>
+                    <text x="150" y="210" text-anchor="middle" fill="white" font-weight="bold" font-size="16">C</text>
+
+                    <circle cx="300" cy="150" r="25" fill="#6f42c1"/>
+                    <text x="300" y="160" text-anchor="middle" fill="white" font-weight="bold" font-size="16">D</text>
+
+                    <circle cx="400" cy="100" r="25" fill="#6f42c1"/>
+                    <text x="400" y="110" text-anchor="middle" fill="white" font-weight="bold" font-size="16">E</text>
+                </svg>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">
+                    <strong>Vértices:</strong> {A, B, C, D, E}<br>
+                    <strong>Aristas:</strong> {(A,B), (A,C), (B,C), (B,D), (C,D), (D,E)}<br>
+                    <strong>Grados:</strong> A=2, B=3, C=3, D=3, E=1
+                </p>
+            </div>
+
+            <h2>Tipos de Grafos</h2>
+
+            <h3>1. Grafos Dirigidos (Digrafos)</h3>
+            <p>
+                En un <strong>grafo dirigido</strong>, cada arista tiene una dirección específica, representada generalmente con una flecha.
+                La arista (u, v) es diferente de la arista (v, u).
+            </p>
+            <p><strong>Aplicaciones:</strong> Redes de flujo, dependencias de tareas, páginas web (links).</p>
+            
+            <div class="diagram-container">
+                <div class="diagram-title">📊 Grafo Dirigido - Ejemplo</div>
+                <svg width="100%" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" style="max-width: 400px; margin: 0 auto; display: block;">
+                    <!-- Aristas con flechas -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#0d6efd"/>
+                        </marker>
+                    </defs>
+                    
+                    <line x1="80" y1="80" x2="200" y2="80" stroke="#0d6efd" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <line x1="200" y1="80" x2="200" y2="160" stroke="#0d6efd" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <line x1="200" y1="160" x2="80" y2="160" stroke="#0d6efd" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+                    <!-- Vértices -->
+                    <circle cx="80" cy="80" r="20" fill="#6f42c1"/>
+                    <text x="80" y="88" text-anchor="middle" fill="white" font-weight="bold">A</text>
+
+                    <circle cx="200" cy="80" r="20" fill="#6f42c1"/>
+                    <text x="200" y="88" text-anchor="middle" fill="white" font-weight="bold">B</text>
+
+                    <circle cx="200" cy="160" r="20" fill="#6f42c1"/>
+                    <text x="200" y="168" text-anchor="middle" fill="white" font-weight="bold">C</text>
+                </svg>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">
+                    <strong>Aristas:</strong> (A→B), (B→C), (C→A)<br>
+                    <strong>Nota:</strong> Cada arista tiene una dirección específica.
+                </p>
+            </div>
+
+            <h3>2. Grafos No Dirigidos</h3>
+            <p>
+                En un <strong>grafo no dirigido</strong>, las aristas no tienen dirección. La conexión es bidireccional: 
+                si existe una arista entre u y v, puedes ir tanto de u a v como de v a u.
+            </p>
+            <p><strong>Aplicaciones:</strong> Redes sociales (amistades), carreteras (sin sentido único), circuitos eléctricos.</p>
+
+            <h3>3. Grafos Ponderados</h3>
+            <p>
+                Un <strong>grafo ponderado</strong> es aquel donde cada arista tiene asociado un valor numérico llamado <strong>peso o costo</strong>.
+            </p>
+            <p><strong>Aplicaciones:</strong> Mapas con distancias, redes con costos de transmisión, horarios de vuelos.</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title">📊 Grafo Ponderado - Ejemplo</div>
+                <svg width="100%" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" style="max-width: 400px; margin: 0 auto; display: block;">
+                    <!-- Aristas -->
+                    <line x1="80" y1="100" x2="200" y2="100" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="200" y1="100" x2="300" y2="150" stroke="#0d6efd" stroke-width="2"/>
+                    <line x1="80" y1="100" x2="300" y2="150" stroke="#0d6efd" stroke-width="2"/>
+
+                    <!-- Pesos -->
+                    <text x="140" y="85" text-anchor="middle" fill="#198754" font-weight="bold" font-size="14">5</text>
+                    <text x="270" y="115" text-anchor="middle" fill="#198754" font-weight="bold" font-size="14">3</text>
+                    <text x="180" y="135" text-anchor="middle" fill="#198754" font-weight="bold" font-size="14">7</text>
+
+                    <!-- Vértices -->
+                    <circle cx="80" cy="100" r="20" fill="#6f42c1"/>
+                    <text x="80" y="108" text-anchor="middle" fill="white" font-weight="bold">A</text>
+
+                    <circle cx="200" cy="100" r="20" fill="#6f42c1"/>
+                    <text x="200" y="108" text-anchor="middle" fill="white" font-weight="bold">B</text>
+
+                    <circle cx="300" cy="150" r="20" fill="#6f42c1"/>
+                    <text x="300" y="158" text-anchor="middle" fill="white" font-weight="bold">C</text>
+                </svg>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">
+                    <strong>Aristas ponderadas:</strong> (A-B: 5), (B-C: 3), (A-C: 7)<br>
+                    <strong>Camino más corto A→C:</strong> A→B→C con costo 8 (5+3)
+                </p>
+            </div>
+
+            <h3>4. Otros Tipos Importantes</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Grafo Conexo</strong></td>
+                        <td>Existe un camino entre cualquier par de vértices</td>
+                        <td>Red de carreteras en un país</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grafo Desconexo</strong></td>
+                        <td>Existen componentes separadas</td>
+                        <td>Múltiples redes aisladas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grafo Cíclico</strong></td>
+                        <td>Contiene al menos un ciclo</td>
+                        <td>Bucle en dependencias de tareas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grafo Acíclico</strong></td>
+                        <td>No contiene ciclos (DAG)</td>
+                        <td>Árbol genealógico, build dependencies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Árbol</strong></td>
+                        <td>Grafo conexo acíclico</td>
+                        <td>Estructura jerárquica</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grafo Completo</strong></td>
+                        <td>Hay arista entre cada par de vértices</td>
+                        <td>Torneo de todos contra todos</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Propiedades Importantes</h2>
+            <ul>
+                <li><strong>Orden:</strong> Número de vértices en el grafo (|V|)</li>
+                <li><strong>Tamaño:</strong> Número de aristas en el grafo (|E|)</li>
+                <li><strong>Densidad:</strong> Relación entre aristas reales y máximas posibles</li>
+                <li><strong>Camino:</strong> Secuencia de vértices conectados por aristas</li>
+                <li><strong>Ciclo:</strong> Camino que comienza y termina en el mismo vértice</li>
+            </ul>
+
+            <h2>Casos de Uso en la Vida Real</h2>
+            <ul>
+                <li>🌐 <strong>Redes Sociales:</strong> Usuarios como vértices, amistades como aristas</li>
+                <li>🗺️ <strong>Sistemas GPS:</strong> Ubicaciones como vértices, caminos como aristas ponderadas</li>
+                <li>🌍 <strong>Internet:</strong> Servidores como vértices, conexiones como aristas</li>
+                <li>🎓 <strong>Prerrequisitos Académicos:</strong> Cursos como vértices, dependencias como aristas dirigidas</li>
+                <li>🚀 <strong>Proyectos:</strong> Tareas como vértices, dependencias como aristas</li>
+                <li>🧬 <strong>Biología Molecular:</strong> Moléculas como vértices, enlaces químicos como aristas</li>
+                <li>🎮 <strong>Videojuegos:</strong> Escenarios como vértices, caminos como aristas</li>
+            </ul>
+
+            <h2>Conclusión</h2>
+            <p>
+                Los grafos son una estructura de datos fundamental que permite modelar relaciones complejas entre objetos. 
+                Entender sus conceptos básicos es esencial para trabajar con algoritmos avanzados y resolver problemas reales.
+            </p>
+            <p>
+                En los próximos posts exploraremos cómo <strong>representar grafos en memoria</strong> y los 
+                <strong>algoritmos fundamentales</strong> para recorrerlos y analizarlos.
+            </p>
+
+            <!-- Navegación de posts -->
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <a href="../index.html" class="btn btn-small">← Volver al Inicio</a>
+                    <a href="post2.html" class="btn btn-small">Siguiente: Representación de Grafos →</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Blog Técnico - Estructura de Datos: Grafos</p>
+        <p>Proyecto educativo para el curso de <strong>Estructura de Datos 2</strong> - UNINCA</p>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

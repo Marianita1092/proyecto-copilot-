@@ -1,0 +1,194 @@
+⚡ QUICK START - EMPEZAR EN 30 SEGUNDOS
+═════════════════════════════════════════════════════════════════════════════════
+
+🎯 ABRIR EL BLOG AHORA MISMO
+─────────────────────────────
+
+WINDOWS:
+  1. Navega a: C:\UNINCA\ESTRUCTURA DE DATOS 2\proyecto-copilot-\blog
+  2. Doble-click en: index.html
+  3. ¡Listo! El blog se abre en tu navegador
+
+═════════════════════════════════════════════════════════════════════════════════
+
+🎨 EXPLORER (EXPLORADOR)
+─────────────────────────
+
+Una vez abierto el blog, encontrarás:
+
+  📍 PÁGINA PRINCIPAL (index.html)
+     • Bienvenida
+     • 3 artículos destacados
+     • Información del blog
+     • Botón para cambiar tema oscuro/claro
+
+  📍 POST #1: Introducción a Grafos
+     • Qué es un grafo
+     • Tipos de grafos
+     • Diagramas interactivos
+     • Casos de uso reales
+
+  📍 POST #2: Representación de Grafos
+     • Lista de Adyacencia
+     • Matriz de Adyacencia
+     • Comparación de complejidad
+     • Ejemplos en Python
+
+  📍 POST #3: Algoritmos BFS y DFS
+     • Algoritmo BFS explicado
+     • Algoritmo DFS explicado
+     • Demo interactiva
+     • Ejercicios prácticos
+
+═════════════════════════════════════════════════════════════════════════════════
+
+🌙 CARACTERÍSTICAS A PROBAR
+────────────────────────────
+
+1️⃣ TEMA OSCURO
+   Click en el botón "🌙 Modo Oscuro" en el header
+   → Se guarda automáticamente
+
+2️⃣ NAVEGACIÓN
+   → Click en los links del header
+   → Click en "Siguiente" o "Anterior" en los posts
+   → Smooth scroll
+
+3️⃣ DIAGRAMAS
+   → Visualizaciones SVG en cada post
+   → Se adaptan al tamaño de la pantalla
+
+4️⃣ CÓDIGO
+   → Ejemplos en Python
+   → Copyable (selecciona y copia)
+
+5️⃣ DEMO ALGORITMOS (en Post #3)
+   → Click "🔍 Ejecutar BFS"
+   → Click "🔍 Ejecutar DFS"
+   → Ver el recorrido
+
+═════════════════════════════════════════════════════════════════════════════════
+
+📱 RESPONSIVE
+──────────────
+
+El blog funciona en:
+  ✓ Móvil (teléfono)
+  ✓ Tablet
+  ✓ Desktop (computadora)
+
+Prueba cambiar el tamaño de tu navegador para ver cómo se adapta.
+
+═════════════════════════════════════════════════════════════════════════════════
+
+⌨️ ATAJOS
+──────────
+
+  [Click] en links → Navega a otra página
+  [Scroll] página → Lee contenido
+  [Click] botón tema → Cambia a oscuro/claro
+  [Click] BFS/DFS → Ejecuta algoritmos
+  [F12] → Abre DevTools para inspeccionar código
+
+═════════════════════════════════════════════════════════════════════════════════
+
+📚 LECTURA RECOMENDADA
+───────────────────────
+
+Orden sugerido:
+
+  1. Post #1: Introducción
+     (Entiende qué son los grafos)
+     ⏱️ ~10 minutos
+
+  2. Post #2: Representación
+     (Aprende cómo guardarlos en memoria)
+     ⏱️ ~12 minutos
+
+  3. Post #3: Algoritmos
+     (Explora cómo recorrerlos)
+     ⏱️ ~15 minutos
+
+Total: ~37 minutos de contenido educativo de calidad
+
+═════════════════════════════════════════════════════════════════════════════════
+
+❓ PREGUNTAS FRECUENTES
+────────────────────────
+
+P: ¿Puedo cambiar el tema?
+R: Sí, click en "🌙 Modo Oscuro" en el header
+
+P: ¿Los algoritmos funcionan en tiempo real?
+R: Sí, en Post #3 hay botones que simulan BFS y DFS
+
+P: ¿Funciona en móvil?
+R: Sí, 100% responsive en todos los dispositivos
+
+P: ¿Puedo descargar el código?
+R: Sí, accede a GitHub: github.com/Marianita1092/proyecto-copilot-
+
+P: ¿Hay más posts?
+R: Actualmente hay 3 posts principales, pero puedes agregar más
+
+═════════════════════════════════════════════════════════════════════════════════
+
+🔗 NAVEGACIÓN RÁPIDA
+─────────────────────
+
+Índice de artículos:
+
+  index.html
+    ├─→ posts/post1.html (Introducción)
+    ├─→ posts/post2.html (Representación)
+    └─→ posts/post3.html (Algoritmos)
+
+Cada post tiene botones para navegar al siguiente/anterior.
+
+═════════════════════════════════════════════════════════════════════════════════
+
+💡 TIPS
+────────
+
+1. Abre DevTools (F12) para ver el código HTML/CSS/JS
+
+2. Los diagramas SVG se pueden ampliar sin perder calidad
+
+3. El modo oscuro es perfecto para leer de noche
+
+4. Los ejemplos de código están listos para copiar
+
+5. Comparte el blog con amigos/compañeros
+
+═════════════════════════════════════════════════════════════════════════════════
+
+🚀 SIGUIENTE PASO
+──────────────────
+
+Después de leer el blog:
+
+  1. Entiende los conceptos de grafos
+  2. Aprende a implementarlos
+  3. Practica con los ejercicios
+  4. Experimenta con tu propio código
+
+═════════════════════════════════════════════════════════════════════════════════
+
+📞 CONTACTO
+────────────
+
+¿Dudas? Revisa:
+  • README.md (documentación completa)
+  • Comentarios en el código
+  • Los ejemplos en cada post
+
+═════════════════════════════════════════════════════════════════════════════════
+
+¡DISFRUTA! 🎉
+
+Estás a punto de aprender sobre una de las estructuras de datos más importantes
+en la informática.
+
+Abre el blog y comienza a explorar. ¡Espero que lo disfrutes!
+
+═════════════════════════════════════════════════════════════════════════════════

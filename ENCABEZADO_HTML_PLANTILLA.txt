@@ -1,0 +1,257 @@
+<!-- ============================================
+     ENCABEZADO HTML5 COMPLETO Y PROFESIONAL
+     Blog Técnico: Estructura de Datos - Grafos
+     ============================================ -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Meta Tags Básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags SEO -->
+    <title>🌐 Blog Técnico - Estructura de Datos: Grafos | UNINCA</title>
+    <meta name="description" content="Blog educativo profesional sobre Grafos con 3 posts detallados, diagramas interactivos y demostraciones de algoritmos BFS y DFS.">
+    <meta name="keywords" content="grafos, estructura de datos, BFS, DFS, educativo, blog técnico">
+    <meta name="author" content="UNINCA - Estructura de Datos 2">
+    
+    <!-- Meta Tags Open Graph (para compartir en redes) -->
+    <meta property="og:title" content="Blog Técnico: Estructura de Datos - Grafos">
+    <meta property="og:description" content="Blog educativo sobre Grafos con contenido de alta calidad, diagramas interactivos y algoritmos BFS/DFS.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630">
+    <meta property="og:type" content="website">
+    
+    <!-- Meta Tags Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog Técnico: Grafos">
+    <meta name="twitter:description" content="Aprende sobre Grafos con nuestro blog educativo profesional">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://marianita1092.github.io/proyecto-copilot-/blog/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><circle cx='15' cy='15' r='12' fill='%23667eea'/><text x='15' y='18' text-anchor='middle' font-size='16' fill='white' font-weight='bold'>G</text></svg>">
+    
+    <!-- Preload Fonts (opcional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Tema Color para navegadores móviles -->
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23667eea' width='180' height='180'/><circle cx='90' cy='90' r='60' fill='white'/></svg>">
+    
+    <!-- CSS Estilos -->
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --text-dark: #333;
+            --text-light: #666;
+            --text-lightest: #888;
+            --bg-light: #f8f9fa;
+            --bg-lighter: #fff3cd;
+            --border-light: #eee;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: left;
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .description ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .description li {
+            padding: 0.5rem 0;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .button:active {
+            transform: translateY(-1px);
+        }
+        
+        .buttons {
+            margin: 2rem 0;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .stat {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .stat:hover {
+            transform: translateY(-2px);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .guide {
+            text-align: left;
+            background: #e8f4f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .guide h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .guide ol {
+            margin-left: 1.5rem;
+            color: #555;
+        }
+        
+        .guide li {
+            margin: 0.5rem 0;
+        }
+        
+        footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-lightest);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: text-decoration 0.3s;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- El resto del HTML comienza aquí -->
+
+<!-- ============================================
+     FIN DEL ENCABEZADO
+     ============================================ -->
