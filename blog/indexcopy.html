@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Técnico - Estructura de Datos: Grafos</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- ============================================
+         ENCABEZADO (HEADER)
+         ============================================ -->
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <!-- Logo/Marca -->
+                <div class="navbar-brand">
+                    <h1 class="site-title">📚 Grafos</h1>
+                    <p class="site-subtitle">Mi primer Blog Estructura Datos Nel - Estructura de Datos</p>
+                </div>
+                
+                <!-- Navegación Principal -->
+                <ul class="navbar-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#posts" class="nav-link">Blog</a></li>
+                    <li><a href="#acerca" class="nav-link">Acerca de</a></li>
+                </ul>
+                
+                <!-- Botón Tema Oscuro -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================
+         SECCIÓN PRINCIPAL
+         ============================================ -->
+    <main class="main-content">
+        <!-- Sección de Bienvenida -->
+        <section class="hero-section" id="inicio">
+            <div class="hero-content">
+                <h2 class="hero-title">Bienvenido al Blog de Grafos Nel Mariano</h2>
+                <p class="hero-subtitle">
+                    Aprende sobre estructuras de datos, representaciones y algoritmos de grafos
+                </p>
+                <a href="#posts" class="btn btn-primary">Leer Blog →</a>
+            </div>
+        </section>
+
+        <!-- Estadísticas -->
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <span class="stat-number">3</span>
+                    <p class="stat-label">Posts Técnicos</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">6500+</span>
+                    <p class="stat-label">Palabras</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <p class="stat-label">Educativo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Posts -->
+        <section class="posts-section" id="posts">
+            <div class="posts-container">
+                <h2 class="section-title">Artículos del Blog</h2>
+                
+                <div class="posts-grid">
+                    <!-- Post 1 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <h3 class="post-title">Introducción a los Grafos</h3>
+                            <span class="post-date">Post 1</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Conoce los conceptos fundamentales de los grafos, sus componentes 
+                            (nodos y aristas), tipos principales y aplicaciones en el mundo real.
+                        </p>
+                        <div class="post-meta">
+                            <span class="post-duration">5 min lectura</span>
+                            <a href="posts/post1.html" class="post-link">Leer más →</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <h3 class="post-title">Representación de Grafos</h3>
+                            <span class="post-date">Post 2</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Descubre las principales formas de representar grafos: lista de 
+                            adyacencia y matriz de adyacencia. Análisis de complejidad y casos de uso.
+                        </p>
+                        <div class="post-meta">
+                            <span class="post-duration">6 min lectura</span>
+                            <a href="posts/post2.html" class="post-link">Leer más →</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <h3 class="post-title">Algoritmos: BFS y DFS</h3>
+                            <span class="post-date">Post 3</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Aprende los algoritmos de recorrido más populares: Búsqueda en Amplitud (BFS) 
+                            y Búsqueda en Profundidad (DFS). Pseudocódigo e implementación.
+                        </p>
+                        <div class="post-meta">
+                            <span class="post-duration">7 min lectura</span>
+                            <a href="posts/post3.html" class="post-link">Leer más →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Acerca De -->
+        <section class="about-section" id="acerca">
+            <div class="about-container">
+                <h2 class="section-title">Acerca de Este Blog</h2>
+                <div class="about-content">
+                    <p>
+                        Este blog técnico está diseñado como material educativo para estudiantes 
+                        de estructura de datos. Cada artículo proporciona una comprensión profunda 
+                        de conceptos clave relacionados con grafos.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <span class="feature-icon">📖</span>
+                            <h4>Contenido de Calidad</h4>
+                            <p>Posts bien estructurados con ejemplos prácticos</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🎨</span>
+                            <h4>Diseño Responsivo</h4>
+                            <p>Funciona perfecto en móvil, tablet y desktop</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔬</span>
+                            <h4>Interactivo</h4>
+                            <p>Demostraciones de algoritmos en tiempo real</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================
+         PIE DE PÁGINA (FOOTER)
+         ============================================ -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p>&copy; 2024 Blog Técnico - Grafos. Todos los derechos reservados.</p>
+                <p>Diseñado para aprendizaje educativo en Estructura de Datos</p>
+            </div>
+            <div class="footer-links">
+                <a href="#inicio" class="footer-link">Inicio</a>
+                <a href="#posts" class="footer-link">Blog</a>
+                <a href="#acerca" class="footer-link">Acerca de</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
